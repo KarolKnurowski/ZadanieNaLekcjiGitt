@@ -11,9 +11,17 @@ namespace ZadanieNaLekcjiGit
 {
     public partial class MainPage : TabbedPage
     {
+        User user;
         public MainPage(User user)
         {
+
             InitializeComponent();
+            this.user = user;
+            UploadData();
+        }
+        public async void UploadData()
+        {
+       
         }
     }
 }
