@@ -17,9 +17,9 @@ namespace ZadanieNaLekcjiGit
             InitializeComponent();
         }
 
-        private void Zaloguj_Clicked(object sender, EventArgs e)
+        private async void Zaloguj_Clicked(object sender, EventArgs e)
         {
-
+      
         }
     }
 }

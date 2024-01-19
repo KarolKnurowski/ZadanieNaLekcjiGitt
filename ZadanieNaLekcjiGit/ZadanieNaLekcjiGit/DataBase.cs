@@ -17,7 +17,10 @@ namespace ZadanieNaLekcjiGit
             _database.CreateTableAsync<Score>().Wait();
             _database.CreateTableAsync<Subject>().Wait();
         }
-
+        public Task<List<User>> WezUseraFiltr(string login, string password)
+        {
+            return _database.QueryAsync<User>("SELECT * FROM User WHERE Login=? AND Password=?", login, password);
+        }
         public Task<int> DodajUsera(User user)
         {
             return _database.InsertAsync(user);
