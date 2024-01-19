@@ -1,12 +1,17 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="ZadanieNaLekcjiGit.Login">
+             x:Class="ZadanieNaLekcjiGit.Login"
+             NavigationPage.HasNavigationBar="False"
+             BackgroundColor="#3e3e3e">
     <ContentPage.Content>
-        <StackLayout>
-            <Label Text="Welcome to Xamarin.Forms!"
-                VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand" />
+        <StackLayout Margin="10,10,10,10">
+            <Label Text="Login:" TextColor="White" FontSize="Large" HorizontalTextAlignment="Center"/>
+            <Entry x:Name="loginEntry" TextColor="White"/>
+            <Label Text="Hasło:" TextColor="White" FontSize="Large" HorizontalTextAlignment="Center"/>
+            <Entry Text="HasloEntry" TextColor="White" IsPassword="True"/>
+            <Button Text="Zaloguj" x:Name="LoginButton" BackgroundColor="CadetBlue" Clicked="Zaloguj_Clicked"/>
+
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

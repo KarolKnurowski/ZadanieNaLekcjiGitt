@@ -4,7 +4,7 @@ using System.Text;
 
 namespace ZadanieNaLekcjiGit
 {
-    internal class DataBase
+    public class DataBase
     {
     }
 }
