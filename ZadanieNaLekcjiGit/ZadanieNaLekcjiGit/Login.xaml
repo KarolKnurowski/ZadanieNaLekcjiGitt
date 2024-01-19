@@ -9,7 +9,7 @@
             <Label Text="Login:" TextColor="White" FontSize="Large" HorizontalTextAlignment="Center"/>
             <Entry x:Name="loginEntry" TextColor="White"/>
             <Label Text="Hasło:" TextColor="White" FontSize="Large" HorizontalTextAlignment="Center"/>
-            <Entry Text="HasloEntry" TextColor="White" IsPassword="True"/>
+            <Entry x:Name="HasloEntry" TextColor="White" IsPassword="True"/>
             <Button Text="Zaloguj" x:Name="LoginButton" BackgroundColor="CadetBlue" Clicked="Zaloguj_Clicked"/>
 
         </StackLayout>
