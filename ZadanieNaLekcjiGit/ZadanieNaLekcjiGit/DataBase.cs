@@ -30,12 +30,12 @@ namespace ZadanieNaLekcjiGit
         {
             return _database.QueryAsync<User>("SELECT * FROM User");
         }
-        public Task<List<Subject>> GetSubjects()
+        public Task<List<Subject>> WezOcenyy()
         {
             return _database.QueryAsync<Subject>("SELECT * FROM Subject");
         }
 
-        public Task<List<Score>> GetScories()
+        public Task<List<Score>> WezOceny()
         {
             return _database.QueryAsync<Score>("SELECT * FROM Score");
         }
@@ -50,7 +50,7 @@ namespace ZadanieNaLekcjiGit
             return _database.InsertAsync(score);
         }
 
-        public Task<List<Score>> GetScories(int user_id, int subject_id, string period)
+        public Task<List<Score>> WezOceny(int user_id, int subject_id, string period)
         {
             return _database.QueryAsync<Score>("SELECT * FROM Score WHERE User_id=? AND Subject_id=? AND Period=?", user_id, subject_id, period);
         }
