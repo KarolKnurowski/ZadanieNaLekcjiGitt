@@ -11,7 +11,7 @@
             <Label Text="Hasło:" TextColor="White" FontSize="Large" HorizontalTextAlignment="Center"/>
             <Entry x:Name="HasloEntry" TextColor="White" IsPassword="True"/>
             <Button Text="Zaloguj" x:Name="LoginButton" BackgroundColor="CadetBlue" Clicked="Zaloguj_Clicked"/>
-
+            <Button Text="Zarejestruj się" BackgroundColor="CadetBlue" Clicked="ZarejestrujSie_Nav"/>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

@@ -59,5 +59,10 @@ namespace ZadanieNaLekcjiGit
             var user = users.ElementAt(0);
             Navigation.PushAsync(new MainPage(user));
         }
+
+        private void ZarejestrujSie_Nav(object sender, EventArgs e)
+        {
+            Navigation.PushAsync(new Register());
+        }
     }
 }
