@@ -16,5 +16,15 @@ namespace ZadanieNaLekcjiGit
         {
             InitializeComponent();
         }
+
+        private void Zarejestruj(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Zaloguj_Click(object sender, EventArgs e)
+        {
+            Navigation.PushAsync(new Login());
+        }
     }
 }
