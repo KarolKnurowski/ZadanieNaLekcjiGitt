@@ -4,12 +4,12 @@
              x:Class="ZadanieNaLekcjiGit.Register">
     <ContentPage.Content>
         <StackLayout>
-            <Label Text="Login:" TextColor="White" FontSize="Large" HorizontalTextAlignment="Center"/>
-            <Entry x:Name="loginEntry" TextColor="White"/>
-            <Label Text="Hasło:" TextColor="White" FontSize="Large" HorizontalTextAlignment="Center"/>
-            <Entry x:Name="HasloEntry" TextColor="White" IsPassword="True"/>
-            <Label Text="Powtórz hasło:" TextColor="White" FontSize="Large" HorizontalTextAlignment="Center"/>
-            <Entry x:Name="HasloPEntry" TextColor="White" IsPassword="True"/>
+            <Label Text="Login:"  FontSize="Large" HorizontalTextAlignment="Center"/>
+            <Entry x:Name="loginEntry" />
+            <Label Text="Hasło:"  FontSize="Large" HorizontalTextAlignment="Center"/>
+            <Entry x:Name="HasloEntry"  IsPassword="True"/>
+            <Label Text="Powtórz hasło:" FontSize="Large" HorizontalTextAlignment="Center"/>
+            <Entry x:Name="HasloPEntry"  IsPassword="True"/>
             <Button Text="Zarejestruj się" x:Name="LoginButton" BackgroundColor="CadetBlue" Clicked="Zarejestruj"/>
             <Button Text="Zaloguj się" BackgroundColor="CadetBlue" Clicked="Zaloguj_Click"/>
         </StackLayout>

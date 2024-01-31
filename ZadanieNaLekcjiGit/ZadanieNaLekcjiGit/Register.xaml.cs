@@ -1,9 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 using System.IO;
@@ -16,27 +11,41 @@ namespace ZadanieNaLekcjiGit
     {
         private readonly DataBase _dataAccess;
         User user;
+
         public Register()
         {
             _dataAccess = new DataBase(Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "bazadanych.db3"));
             InitializeComponent();
-          
-
         }
 
-        private void Zarejestruj(object sender, EventArgs e)
+        private async void Zarejestruj(object sender, EventArgs e)
         {
             string login = loginEntry.Text;
             string haslo = HasloEntry.Text;
             string powtorzhaslo = HasloPEntry.Text;
+
             if (haslo != powtorzhaslo)
             {
-                DisplayAlert("Błąd!", "Hasła nie są takie same!", "ok");
+                await DisplayAlert("Błąd!", "Hasła nie są takie same!", "OK");
+                return;
             }
+
             user = new User();
             user.Login = login;
             user.Password = haslo;
-            _dataAccess.StworzUzytkownika(user);
+
+            int result = await _dataAccess.StworzUzytkownika(user);
+
+            if (result == -1)
+            {
+                await DisplayAlert("Błąd!", "Login już istnieje!", "OK");
+
+            }
+            else
+            {
+                await DisplayAlert("Sukces", "Użytkownik został utworzony!", "OK");
+
+            }
         }
 
         private void Zaloguj_Click(object sender, EventArgs e)

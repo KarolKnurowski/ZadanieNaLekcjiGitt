@@ -22,19 +22,27 @@ namespace ZadanieNaLekcjiGit
         {
             return _database.QueryAsync<User>("SELECT * FROM User WHERE Login=? AND Password=?", login, password);
         }
-        public  Task<int> StworzUzytkownika(User user)
+        public async Task<bool> CzyLoginJuzIstnieje(string login)
         {
-            return  _database.InsertAsync(user);
+            var existingUser = await _database.Table<User>().FirstOrDefaultAsync(u => u.Login == login);
+            return existingUser != null;
         }
-        //public async Task<int> CzyLoginJuzIstnieje(string login)
-        //{
-        //    var existingUser = await _database.Table<User>().FirstOrDefaultAsync(u => u.Login == login);
-        //    return existingUser != null;
-        //}
-        public User ZalogujUzytkownika(string login, string haslo)
+
+        public async Task<int> StworzUzytkownika(User user)
         {
-            return  _database.Table<User>().Where(u => u.Login == login && u.Password == haslo).FirstAsync().Result;
+            if (await CzyLoginJuzIstnieje(user.Login))
+            {
+               
+                return -1;
+            }
+
+            return await _database.InsertAsync(user);
         }
+        public async Task<User> ZalogujUzytkownika(string login, string haslo)
+        {
+            return await _database.Table<User>().FirstOrDefaultAsync(u => u.Login == login && u.Password == haslo);
+        }
+
         public Task<List<User>> WezUsera()
         {
             return _database.QueryAsync<User>("SELECT * FROM User");
@@ -62,6 +70,10 @@ namespace ZadanieNaLekcjiGit
         public Task<List<Score>> WezOceny(int user_id, int subject_id, string period)
         {
             return _database.QueryAsync<Score>("SELECT * FROM Score WHERE User_id=? AND Subject_id=? AND Period=?", user_id, subject_id, period);
+        }
+        public Task<Subject> WezOcenyyBySubjectName(string subjectName)
+        {
+            return _database.Table<Subject>().FirstOrDefaultAsync(s => s.Name == subjectName);
         }
 
     }

@@ -15,5 +15,11 @@ namespace ZadanieNaLekcjiGit.tabele
         public DateTime Date { get; set; }
         public string Description { get; set; }
         public string Period { get; set; }
+        public DateTime AddedDate { get; set; }
+
+        public Score()
+        {
+            Period = "Aktualny okres";
+        }
     }
 }
