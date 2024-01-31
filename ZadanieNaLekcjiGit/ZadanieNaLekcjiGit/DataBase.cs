@@ -17,15 +17,24 @@ namespace ZadanieNaLekcjiGit
             _database.CreateTableAsync<Score>().Wait();
             _database.CreateTableAsync<Subject>().Wait();
         }
+       
         public Task<List<User>> WezUseraFiltr(string login, string password)
         {
             return _database.QueryAsync<User>("SELECT * FROM User WHERE Login=? AND Password=?", login, password);
         }
-        public Task<int> DodajUsera(User user)
+        public  Task<int> StworzUzytkownika(User user)
         {
-            return _database.InsertAsync(user);
+            return  _database.InsertAsync(user);
         }
-
+        //public async Task<int> CzyLoginJuzIstnieje(string login)
+        //{
+        //    var existingUser = await _database.Table<User>().FirstOrDefaultAsync(u => u.Login == login);
+        //    return existingUser != null;
+        //}
+        public User ZalogujUzytkownika(string login, string haslo)
+        {
+            return  _database.Table<User>().Where(u => u.Login == login && u.Password == haslo).FirstAsync().Result;
+        }
         public Task<List<User>> WezUsera()
         {
             return _database.QueryAsync<User>("SELECT * FROM User");

@@ -13,6 +13,8 @@ namespace ZadanieNaLekcjiGit
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class Login : ContentPage
     {
+    
+        User user;
         public Login()
         {
             InitializeComponent();
@@ -49,15 +51,9 @@ namespace ZadanieNaLekcjiGit
 
         private async void Zaloguj_Clicked(object sender, EventArgs e)
         {
-            var users = await App.Database.WezUseraFiltr(loginEntry.Text,HasloEntry.Text);
-            if (loginEntry.Text.Length != 7 || users.Count == 0)
-            {
-                DisplayAlert("Blad", "Podano błędne dane", "OK");
-                return;
-            }
-
-            var user = users.ElementAt(0);
-            Navigation.PushAsync(new MainPage(user));
+        string login=loginEntry.Text;
+            string haslo=HasloEntry.Text;
+            user = App.Database.ZalogujUzytkownika(login, haslo);
         }
 
         private void ZarejestrujSie_Nav(object sender, EventArgs e)
